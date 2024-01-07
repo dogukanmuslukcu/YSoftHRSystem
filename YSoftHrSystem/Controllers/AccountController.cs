@@ -79,30 +79,23 @@ namespace YSoftHrSystem.Controllers
         [HttpPost]
         public ActionResult Hesapla(string employeeName)
         {
-            // Kullanıcı adına göre veritabanından giriş yılı bilgisini çek
             var user = _dbContext.Users.FirstOrDefault(u => u.Username == employeeName);
 
             if (user != null && int.TryParse(user.HireYear, out int hireYear))
             {
-                // Şuanki yılı al
                 int currentYear = DateTime.Now.Year;
 
-                // Çalışma yılı hesapla
                 int yearsOfWork = currentYear - hireYear;
 
-                // Tazminatı hesapla (örnek katsayı: 20000)
                 decimal tazminat = yearsOfWork * 20000;
 
                 string result = $"{employeeName} adlı çalışanın {yearsOfWork} yıllık tazminatı: {tazminat} TL";
 
-                // Burada "TazminatHesapla" view'ını çağırarak sonucu gösteriyoruz.
                 return View("TazminatHesapla", (object)result);
             }
 
-            // Kullanıcı bulunamadıysa veya HireYear dönüşümü başarısız olduysa
             string notFoundResult = $"{employeeName} adlı kullanıcı bulunamadı";
 
-            // Burada "TazminatHesapla" view'ını çağırarak sonucu gösteriyoruz.
             return View("TazminatHesapla", (object)notFoundResult);
         }
 
