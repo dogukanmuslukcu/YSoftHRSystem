@@ -1,19 +1,42 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
+
+
+
 <main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+    <h2 id="title">Doğuş Üniversitesi Dudullu OSB Yerleşkesi</h2>
 
     <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
+        Doğuş Üniversitesi<br />
+        Adres: Esenkent, Dudullu Osb Mah, Nato Yolu Cd 265/ 1, 34775 Ümraniye/İstanbul
     </address>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
+    <!-- Google Maps JavaScript API kullanarak harita gösterme -->
+    <div id="map" style="height: 400px;"></div>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBO4nI7D5t0Db_42E8YXuqFezNV76OyR8&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            // Üniversitenin koordinatlarını belirtin
+            var universityLocation =
+            {
+                lat: 41.00164031982422,
+                lng: 29.176177978515625,
+            };
+
+            // Harita oluşturun
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: universityLocation,
+                zoom: 15 // Zoom seviyesini ayarlayabilirsiniz
+            });
+
+            // İşaretçi ekleyin
+            var marker = new google.maps.Marker({
+                position: universityLocation,
+                map: map,
+                title: 'Doğuş Üniversitesi'
+            });
+        }
+    </script>
 </main>

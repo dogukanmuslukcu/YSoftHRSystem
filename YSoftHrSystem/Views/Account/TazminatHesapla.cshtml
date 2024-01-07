@@ -1,0 +1,25 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "TazminatHesapla";
+}
+
+<h2>Tazminat Hesapla</h2>
+
+@using (Html.BeginForm("Hesapla", "Account", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="employeeName">Çalışan Adı:</label>
+        <input type="text" name="employeeName" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Hesapla</button>
+}
+
+@if (!string.IsNullOrEmpty(Model))
+{
+    <div class="result">
+        <h4>Tazminat Hesap Sonucu:</h4>
+        <p>@Html.Raw(Model)</p>
+    </div>
+}

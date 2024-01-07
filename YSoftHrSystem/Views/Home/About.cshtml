@@ -2,8 +2,41 @@
     ViewBag.Title = "About";
 }
 <main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
+    <div className="containerAbout">
+        <div className="content">
+           
+            <div className="section">
+                <br/>
+                <h2>Misyonumuz ve Vizyonumuz</h2>
+                <br/>
+                <p>
+                    &emsp;&ensp;CoreQuiz, interaktif bir sınav platformudur. Kurumlar,
+                    çalışanlarına özel sınavlar düzenleyebilir ve başarıya ulaşan
+                    katılımcılara özel olarak hazırlanan sertifikalar sunabilir. .NET
+                    ve React teknolojileri kullanılarak geliştirilen platformumuz,
+                    kullanıcı dostu arayüzü ve güvenilir altyapısıyla öne çıkıyor.
+                </p>
+            </div>
 
-    <p>Use this area to provide additional information.</p>
+            <div className="section">
+                <h2 className="aboutHead">Ekip</h2>
+                <br />
+                <ul className="teamList">
+                    <li className="contactListItem">Doğukan MUSLUKÇU&nbsp; - &nbsp;Back-End</li>
+                    <li className="contactListItem">Mehmet Fatih KARA&nbsp; - &nbsp;Front-End</li>
+                    <li className="contactListItem">Murat Özkan KAYA&nbsp; - &nbsp;Front-End</li>
+                    <li className="contactListItem">Elif MARALI&nbsp; - &nbsp;Front-End</li>
+                </ul>
+            </div>
+
+            <div className="section">
+                <h2 className="aboutHead">Ekibin Geçmiş Başarılar</h2>
+                <br />
+                <p>&emsp;&ensp;YSoftHRSystem</p>
+                <p>&emsp;&ensp;"Boodle" planlama projesi</p>
+                <p>&emsp;&ensp;Haber Sistemi</p>
+                <p>&emsp;&ensp;CoreMarket</p>
+            </div>
+        </div>
+    </div>
 </main>

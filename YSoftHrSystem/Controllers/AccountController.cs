@@ -25,24 +25,23 @@ namespace YSoftHrSystem.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string username, string password)
         {
-            // Kullanıcı girişini kontrol et
             var user = _dbContext.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
 
             if (user != null)
             {
-                // Kullanıcı doğrulandı, giriş başarılı
-                // Session, Cookie veya Identity kullanarak giriş yapmış olarak işaretleyebilirsiniz.
-                return RedirectToAction("Index", "Home"); // Ana sayfaya yönlendirme
+                Session["UserId"] = user.Id;
+                return RedirectToAction("Index", "Home");
             }
 
-            // Kullanıcı adı veya şifre hatalı
             ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalı.");
-
-            // Yanlış giriş durumunda view'e geri dön
             return View();
         }
 
-
+        public ActionResult Logout()
+        {
+            Session["UserId"] = null;
+            return RedirectToAction("Login");
+        }
         [HttpGet]
         public ActionResult Register()
         {
@@ -71,6 +70,44 @@ namespace YSoftHrSystem.Controllers
             // Model geçerli değilse, formu tekrar göster
             return View(model);
         }
+        [HttpGet]
+        public ActionResult TazminatHesapla()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Hesapla(string employeeName)
+        {
+            // Kullanıcı adına göre veritabanından giriş yılı bilgisini çek
+            var user = _dbContext.Users.FirstOrDefault(u => u.Username == employeeName);
+
+            if (user != null && int.TryParse(user.HireYear, out int hireYear))
+            {
+                // Şuanki yılı al
+                int currentYear = DateTime.Now.Year;
+
+                // Çalışma yılı hesapla
+                int yearsOfWork = currentYear - hireYear;
+
+                // Tazminatı hesapla (örnek katsayı: 20000)
+                decimal tazminat = yearsOfWork * 20000;
+
+                string result = $"{employeeName} adlı çalışanın {yearsOfWork} yıllık tazminatı: {tazminat} TL";
+
+                // Burada "TazminatHesapla" view'ını çağırarak sonucu gösteriyoruz.
+                return View("TazminatHesapla", (object)result);
+            }
+
+            // Kullanıcı bulunamadıysa veya HireYear dönüşümü başarısız olduysa
+            string notFoundResult = $"{employeeName} adlı kullanıcı bulunamadı";
+
+            // Burada "TazminatHesapla" view'ını çağırarak sonucu gösteriyoruz.
+            return View("TazminatHesapla", (object)notFoundResult);
+        }
+
+
+
 
     }
 }
