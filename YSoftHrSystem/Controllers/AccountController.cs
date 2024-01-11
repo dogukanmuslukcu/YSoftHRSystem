@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using System;
 using System.Linq;
 using System.Web.Mvc;
 using YSoftHrSystem.Models;
@@ -71,13 +72,13 @@ namespace YSoftHrSystem.Controllers
             return View(model);
         }
         [HttpGet]
-        public ActionResult TazminatHesapla()
+        public ActionResult ComputeCompensation()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Hesapla(string employeeName)
+        public ActionResult ComputeCompensation(string employeeName)
         {
             var user = _dbContext.Users.FirstOrDefault(u => u.Username == employeeName);
 
@@ -91,12 +92,56 @@ namespace YSoftHrSystem.Controllers
 
                 string result = $"{employeeName} adlı çalışanın {yearsOfWork} yıllık tazminatı: {tazminat} TL";
 
-                return View("TazminatHesapla", (object)result);
+                return View("ComputeCompensation", (object)result);
             }
 
             string notFoundResult = $"{employeeName} adlı kullanıcı bulunamadı";
 
-            return View("TazminatHesapla", (object)notFoundResult);
+            return View("ComputeCompensation", (object)notFoundResult);
+        }
+
+        [HttpGet]
+        public ActionResult ComputeSalary()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ComputeSalary(string employeeName)
+        {
+            var user = _dbContext.Users.FirstOrDefault(u => u.Username == employeeName);
+
+            if (user != null && user.Salary==null)
+            {
+                string levelofTitle = user.Title;
+
+                switch (levelofTitle)
+                {
+                    case "Level1":
+                        user.Salary = "10000";
+                        break;
+                    case "Level2":
+                        user.Salary = "20000";
+                        break;
+                    case "Level3":
+                        user.Salary = "30000";
+                        break;
+                    case "Level4":
+                        user.Salary = "40000";
+                        break;
+
+                    default:
+                        return View("Maaş Hesaplanırken Bir Hata Oluştu");
+                }
+                _dbContext.SaveChanges();
+                string result = $"{employeeName} adlı çalışanın maaşı hesaplanmıştır. VeriTabanına kaydedilmiştir.";
+
+                return View("ComputeSalary", (object)result);
+            }
+
+            string notFoundResult = $"{employeeName} adlı kullanıcı bulunamadı";
+
+            return View("ComputeSalary", (object)notFoundResult);
         }
 
 

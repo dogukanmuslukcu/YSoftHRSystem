@@ -20,7 +20,9 @@
                 <li>@Html.ActionLink("YSoftHrSystem", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("Hakkımızda", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("İletişim", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("TazminatHesapla", "TazminatHesapla", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Tazminat Hesapla", "ComputeCompensation", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Maaş Hesapla", "ComputeSalary", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+
 
                 @if (Session["UserId"] != null)
                 {

@@ -1,19 +1,18 @@
 ﻿@model string
 
 @{
-    ViewBag.Title = "TazminatHesapla";
+    ViewBag.Title = "ComputeSalary";
 }
 
-<h2>Tazminat Hesapla</h2>
 
-@using (Html.BeginForm("Hesapla", "Account", FormMethod.Post))
+@using (Html.BeginForm("ComputeSalary", "Account", FormMethod.Post))
 {
     <div class="form-group">
         <label for="employeeName">Çalışan Adı:</label>
         <input type="text" name="employeeName" class="form-control" required />
     </div>
 
-    <button type="submit" class="btn btn-primary">Hesapla</button>
+    <button type="submit" class="btn btn-primary"> Maaş Hesapla</button>
 }
 
 @if (!string.IsNullOrEmpty(Model))

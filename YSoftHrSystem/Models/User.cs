@@ -12,5 +12,6 @@ namespace YSoftHrSystem.Models
         public string Password { get; set; }
         public string Title { get; set; }
         public string HireYear { get; set; }
+        public string Salary{ get; set; }
     }
 }
