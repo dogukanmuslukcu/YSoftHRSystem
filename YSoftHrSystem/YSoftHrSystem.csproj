@@ -260,6 +260,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\ComputeCompensation.css" />
+    <Content Include="Content\ComputeSalary.css" />
     <Content Include="Content\Contact.css" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\Login.css" />

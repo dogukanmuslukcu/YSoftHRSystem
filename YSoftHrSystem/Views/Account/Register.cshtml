@@ -1,4 +1,4 @@
-﻿﻿@model  YSoftHrSystem.ViewModels.RegisterViewModel
+﻿@model  YSoftHrSystem.ViewModels.RegisterViewModel
 
 @{
     ViewBag.Title = "Register";
@@ -13,15 +13,18 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="formGroupRegister">
-        <label for="Username">Ad Soyad</label>
-        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+<div class="formGroupRegister">
+    <label for="Username">Ad Soyad</label>
+    @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+
+    <label for="Email">Email</label>
+    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
 
 
-        <label for="Password">Şifre</label>
-        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    <label for="Password">Şifre</label>
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
 
 
-        <button type="submit" class="btn btn-primary">Register</button>
-    </div>
+    <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+</div>
 }

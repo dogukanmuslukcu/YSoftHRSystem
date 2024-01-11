@@ -1,5 +1,4 @@
-﻿﻿
-<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,7 +27,7 @@
             <ul class="navbar-nav">
                 @if (Session["UserId"] != null)
                 {
-                    <li><a class="logOutButton" href="@Url.Action("Logout", "Account")">Çıkış Yap</a></li>
+                    <li><a class="logOuButton" href="@Url.Action("Logout", "Account")">Çıkış Yap</a></li>
                 }
                 else
                 {
@@ -49,6 +48,7 @@
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                     <li>@Html.ActionLink("Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
                     <li>@Html.ActionLink("Tazminat Hesapla", "ComputeCompensation", "Account", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
+                    <li>@Html.ActionLink("Maaş Hesaplama", "ComputeSalary", "Account", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
                     <li>@Html.ActionLink("Hakkımızda", "About", "Home", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
                     <li>@Html.ActionLink("İletişim", "Contact", "Home", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
                 </ul>

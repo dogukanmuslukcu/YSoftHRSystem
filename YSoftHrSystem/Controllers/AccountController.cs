@@ -59,6 +59,7 @@ namespace YSoftHrSystem.Controllers
                 {
                     // Diğer kullanıcı bilgileri buraya eklenir
                     Username = model.Username,
+                    Email = model.Email,
                     // Password değerini kontrol et ve atama yap
                     Password = !string.IsNullOrEmpty(model.Password) ? model.Password : throw new ArgumentNullException(nameof(model.Password), "Password cannot be null or empty.")
                 });
@@ -110,36 +111,44 @@ namespace YSoftHrSystem.Controllers
         public ActionResult ComputeSalary(string employeeName)
         {
             var user = _dbContext.Users.FirstOrDefault(u => u.Username == employeeName);
+            string notFoundResult = "";
 
-            if (user != null && user.Salary==null)
+            if (user != null)
             {
-                string levelofTitle = user.Title;
-
-                switch (levelofTitle)
+                if (user.Salary == null)
                 {
-                    case "Level1":
-                        user.Salary = "10000";
-                        break;
-                    case "Level2":
-                        user.Salary = "20000";
-                        break;
-                    case "Level3":
-                        user.Salary = "30000";
-                        break;
-                    case "Level4":
-                        user.Salary = "40000";
-                        break;
+                    string levelofTitle = user.Title;
 
-                    default:
-                        return View("Maaş Hesaplanırken Bir Hata Oluştu");
+                    switch (levelofTitle)
+                    {
+                        case "Level1":
+                            user.Salary = "10000";
+                            break;
+                        case "Level2":
+                            user.Salary = "20000";
+                            break;
+                        case "Level3":
+                            user.Salary = "30000";
+                            break;
+                        case "Level4":
+                            user.Salary = "40000";
+                            break;
+
+                        default:
+                            return View("Maaş Hesaplanırken Bir Hata Oluştu");
+                    }
+                    _dbContext.SaveChanges();
+                    string result = $"{employeeName} adlı çalışanın maaşı hesaplanmıştır. VeriTabanına kaydedilmiştir.";
+
+                    return View("ComputeSalary", (object)result);
+
                 }
-                _dbContext.SaveChanges();
-                string result = $"{employeeName} adlı çalışanın maaşı hesaplanmıştır. VeriTabanına kaydedilmiştir.";
-
-                return View("ComputeSalary", (object)result);
+                notFoundResult = "Maaş daha önceden hesaplanmıştır.";
             }
-
-            string notFoundResult = $"{employeeName} adlı kullanıcı bulunamadı";
+            else 
+            {
+                notFoundResult = $"{employeeName} adlı kullanıcı bulunamadı";
+            }
 
             return View("ComputeSalary", (object)notFoundResult);
         }
