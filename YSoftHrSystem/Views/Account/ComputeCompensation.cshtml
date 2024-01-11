@@ -4,21 +4,31 @@
     ViewBag.Title = "ComputeCompensation";
 }
 
+<link rel="stylesheet" href="~/Content/ComputeCompensation.css" />
 
-@using (Html.BeginForm("ComputeCompensation", "Account", FormMethod.Post))
-{
-    <div class="form-group">
-        <label for="employeeName">Çalışan Adı:</label>
-        <input type="text" name="employeeName" class="form-control" required />
-    </div>
+<div class="tazminat container">
+    <h2>Tazminat Hesapla</h2>
+    @using (Html.BeginForm("ComputeCompensation", "Account", FormMethod.Post))
+    {
 
-    <button type="submit" class="btn btn-primary">Hesapla</button>
-}
+        <form id="tazminatForm">
+            <div class="formGroupTazminat">
+                <label>Çalışan Adı</label>
+                <input type="text" name="employeeName" class="form-control" required />
+            </div>
 
-@if (!string.IsNullOrEmpty(Model))
-{
-    <div class="result">
-        <h4>Tazminat Hesap Sonucu:</h4>
-        <p>@Html.Raw(Model)</p>
-    </div>
-}
+            <div class="formGroupResult">
+                <button type="submit" class="buttonTazminat">Hesapla</button>
+            </div>
+        </form>
+
+    }
+    @if (!string.IsNullOrEmpty(Model))
+    {
+        <div class="result">
+            <h4>Tazminat Hesap Sonucu:</h4>
+            <p>@Html.Raw(Model)</p>
+        </div>
+    }
+
+</div>

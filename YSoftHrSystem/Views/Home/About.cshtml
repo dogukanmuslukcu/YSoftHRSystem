@@ -1,42 +1,40 @@
-﻿@{
+﻿﻿@{
     ViewBag.Title = "About";
+
 }
-<main aria-labelledby="title">
-    <div className="containerAbout">
-        <div className="content">
-           
-            <div className="section">
-                <br/>
-                <h2>Misyonumuz ve Vizyonumuz</h2>
-                <br/>
-                <p>
-                    &emsp;&ensp;CoreQuiz, interaktif bir sınav platformudur. Kurumlar,
-                    çalışanlarına özel sınavlar düzenleyebilir ve başarıya ulaşan
-                    katılımcılara özel olarak hazırlanan sertifikalar sunabilir. .NET
-                    ve React teknolojileri kullanılarak geliştirilen platformumuz,
-                    kullanıcı dostu arayüzü ve güvenilir altyapısıyla öne çıkıyor.
-                </p>
-            </div>
 
-            <div className="section">
-                <h2 className="aboutHead">Ekip</h2>
-                <br />
-                <ul className="teamList">
-                    <li className="contactListItem">Doğukan MUSLUKÇU&nbsp; - &nbsp;Back-End</li>
-                    <li className="contactListItem">Mehmet Fatih KARA&nbsp; - &nbsp;Front-End</li>
-                    <li className="contactListItem">Murat Özkan KAYA&nbsp; - &nbsp;Front-End</li>
-                    <li className="contactListItem">Elif MARALI&nbsp; - &nbsp;Front-End</li>
-                </ul>
-            </div>
+<main class="about-container" aria-labelledby="title">
+    <link href="~/Content/About.css" rel="stylesheet" />
 
-            <div className="section">
-                <h2 className="aboutHead">Ekibin Geçmiş Başarılar</h2>
-                <br />
-                <p>&emsp;&ensp;YSoftHRSystem</p>
-                <p>&emsp;&ensp;"Boodle" planlama projesi</p>
-                <p>&emsp;&ensp;Haber Sistemi</p>
-                <p>&emsp;&ensp;CoreMarket</p>
-            </div>
+    <div class="about-content">
+
+        <div class="about-section">
+            <h2>Misyonumuz ve Vizyonumuz</h2>
+            <p>
+                CoreQuiz, interaktif bir sınav platformudur. Kurumlar, çalışanlarına özel sınavlar düzenleyebilir ve
+                başarıya ulaşan katılımcılara özel olarak hazırlanan sertifikalar sunabilir. .NET ve React teknolojileri
+                kullanılarak geliştirilen platformumuz, kullanıcı dostu arayüzü ve güvenilir altyapısıyla öne çıkıyor.
+            </p>
+        </div>
+
+        <div class="about-section">
+            <h2 class="about-head">Ekip</h2>
+            <ul class="team-list">
+                <li class="team-member">Doğukan MUSLUKÇU - Back-End</li>
+                <li class="team-member">Mehmet Fatih KARA - Front-End</li>
+                <li class="team-member">Murat Özkan KAYA - Front-End</li>
+                <li class="team-member">Elif MARALI - Front-End</li>
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2 class="about-head">Ekibin Geçmiş Başarılar</h2>
+            <ul class="achievements-list">
+                <li>&#10003 "Boodle" planlama projesi</li>
+                <li>&#10003 Haber Sistemi</li>
+                <li>&#10003 CoreMarket</li>
+                <li>&#10003 YSoftHRSystem</li>
+            </ul>
         </div>
     </div>
 </main>
