@@ -1,8 +1,9 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
     <link rel="stylesheet" href="~/Content/Layout.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xxr7CjFVlhGtJtY4X3l74g8+4DHUv4w4tbsW6OK6ovVc4Eyy3cU6WCGJbvv2nv8CIWYO27NapXK+Ar1/5ZVMmw==" crossorigin="anonymous" />
     <title>@ViewBag.Title - My ASP.NET Application</title>
@@ -18,15 +19,16 @@
             </button>
             <ul class="navbar-nav flex-grow-1">
                 <li>@Html.ActionLink("YSoftHrSystem", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Tazminat Hesaplama", "ComputeCompensation", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+                <li>@Html.ActionLink("Maaş Hesaplama", "ComputeSalary", "Account", new { area = "" }, new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("Hakkımızda", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 <li>@Html.ActionLink("İletişim", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Tazminat Hesapla", "ComputeCompensation", "Account", new { area = "" }, new { @class = "nav-link" })</li>
-                <li>@Html.ActionLink("Maaş Hesapla", "ComputeSalary", "Account", new { area = "" }, new { @class = "nav-link" })</li>
+            </ul>
 
-
+            <ul class="navbar-nav">
                 @if (Session["UserId"] != null)
                 {
-                    <li><a class="nav-link" href="@Url.Action("Logout", "Account")">Çıkış Yap</a></li>
+                    <li><a class="logOutButton" href="@Url.Action("Logout", "Account")">Çıkış Yap</a></li>
                 }
                 else
                 {
@@ -37,12 +39,22 @@
         </div>
     </nav>
 
-    <div class="container bodyFooter">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2024 Ysoft HR System. All rights reserved.</p>
-        </footer>
+
+    @RenderBody()
+    <div class="container bodyFooter" id="tazminatContainer">
+
+        @* Footer Başlangıcı *@
+        <div class="container">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li>@Html.ActionLink("Ana Sayfa", "Index", "Home", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
+                    <li>@Html.ActionLink("Tazminat Hesapla", "ComputeCompensation", "Account", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
+                    <li>@Html.ActionLink("Hakkımızda", "About", "Home", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
+                    <li>@Html.ActionLink("İletişim", "Contact", "Home", new { area = "" }, new { @class = "nav-link px-2 text-body-secondary" })</li>
+                </ul>
+                <p class="text-center text-body-secondary">© 2024 - CoreTeam</p>
+            </footer>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
