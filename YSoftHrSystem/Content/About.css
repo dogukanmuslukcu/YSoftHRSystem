@@ -1,0 +1,56 @@
+﻿﻿ /* about.css */
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.about-content {
+    background-color: #2c3e50;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    color: #ecf0f1;
+}
+
+.about-section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #fff;
+}
+
+p {
+    line-height: 1.6;
+    color: #bdc3c7;
+}
+
+.about-head {
+    color: #fff;
+}
+
+.team-list,
+.achievements-list {
+    list-style: none;
+    padding: 0;
+}
+
+    .team-member,
+    .achievements-list li {
+        margin-bottom: 8px;
+        color: #ecf0f1;
+    }
+
+    .achievements-list li {
+        list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path d="M11.32 1.32a1 1 0 0 0-1.41 0L5 6.59 2.09 3.68a1 1 0 1 0-1.41 1.41l3 3a1 1 0 0 0 1.41 0L11 2.73a1 1 0 0 0 .32-.73z"/></svg>');
+
+        @media (max-width: 600px) {
+            .about-container {
+                padding: 10px;
+            }
+
+            .about-content {
+                padding: 10px;
+            }
+        }
