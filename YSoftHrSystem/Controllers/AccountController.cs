@@ -24,9 +24,9 @@ namespace YSoftHrSystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(string username, string password)
+        public ActionResult Login(string email, string password)
         {
-            var user = _dbContext.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            var user = _dbContext.Users.FirstOrDefault(u => u.Email == email && u.Password == password);
 
             if (user != null)
             {

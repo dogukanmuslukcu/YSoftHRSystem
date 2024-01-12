@@ -14,8 +14,8 @@
     @Html.AntiForgeryToken()
 
     <div class="formGroupLogin">
-        <label for="Username">Ad Soyad</label>
-        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+        <label for="Email">E-mail</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
 
         <label for="password">Şifre</label>
         <input type="password" name="password" class="form-control" required />
