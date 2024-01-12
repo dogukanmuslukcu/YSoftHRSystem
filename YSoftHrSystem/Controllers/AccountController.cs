@@ -10,7 +10,7 @@ namespace YSoftHrSystem.Controllers
     public class AccountController : Controller
     {
         private readonly ReCapProjectDBContext _dbContext;
-
+        public string currentUser = null;
         public AccountController()
         {
             _dbContext = new ReCapProjectDBContext();
@@ -31,7 +31,8 @@ namespace YSoftHrSystem.Controllers
             if (user != null)
             {
                 Session["UserId"] = user.Id;
-                Session.Add("Title",user.Title);
+                Session.Add("Title", user.Title);
+                currentUser = Session["Title"].ToString();
 
                 return RedirectToAction("Index", "Home");
             }
@@ -107,10 +108,13 @@ namespace YSoftHrSystem.Controllers
         [HttpGet]
         public ActionResult ComputeSalary()
         {
-            
-          var currentUser = Session["Title"].ToString();
-           
+            var currentUser = "";
 
+            if (Session["Title"] != null)
+            {
+                currentUser = Session["Title"].ToString();
+            }
+           
             if (currentUser == "Owner") 
             {
                 return View();
