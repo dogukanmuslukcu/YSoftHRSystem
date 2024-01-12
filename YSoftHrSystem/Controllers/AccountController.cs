@@ -31,6 +31,8 @@ namespace YSoftHrSystem.Controllers
             if (user != null)
             {
                 Session["UserId"] = user.Id;
+                Session.Add("Title",user.Title);
+
                 return RedirectToAction("Index", "Home");
             }
 
@@ -41,6 +43,7 @@ namespace YSoftHrSystem.Controllers
         public ActionResult Logout()
         {
             Session["UserId"] = null;
+            Session["Title"] = null;
             return RedirectToAction("Login");
         }
         [HttpGet]
@@ -104,7 +107,21 @@ namespace YSoftHrSystem.Controllers
         [HttpGet]
         public ActionResult ComputeSalary()
         {
-            return View();
+            
+          var currentUser = Session["Title"].ToString();
+           
+
+            if (currentUser == "Owner") 
+            {
+                return View();
+            }
+            else 
+            {
+               return RedirectToAction("Login", "Account");
+            }
+
+
+            
         }
 
         [HttpPost]

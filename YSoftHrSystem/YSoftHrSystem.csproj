@@ -242,6 +242,9 @@
     <Compile Include="ViewModels\RegisterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConstantImages\image1.jpg" />
+    <Content Include="ConstantImages\image2.jpg" />
+    <Content Include="ConstantImages\image3.jpg" />
     <Content Include="Content\About.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
