@@ -1,4 +1,5 @@
-﻿﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -27,7 +28,7 @@
             <ul class="navbar-nav">
                 @if (Session["UserId"] != null)
                 {
-                    <li><a class="logOuButton" href="@Url.Action("Logout", "Account")">Çıkış Yap</a></li>
+                    <li>@Html.ActionLink("Çıkış Yap", "Logout", "Account", new { area = "" }, new { @class = "nav-link" })</li>
                 }
                 else
                 {
